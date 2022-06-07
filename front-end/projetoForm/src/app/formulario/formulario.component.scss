@@ -1,0 +1,43 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+.box-formulario {
+    margin-top: 3em;
+    margin-bottom: 3em;
+    width: 100%;
+    display: flex;
+}
+
+.box-trb {
+  
+    margin-bottom: 0.8em;
+}
+
+#formulario-corpo {
+    
+    background-color: rgba(231, 229, 229, 0.35);
+    color: white;
+    border-radius: 5%;
+    padding: 2.5em;
+    margin: 0 auto;
+    width: 55%;
+}
+
+.validation-error 
+{
+    color: #dd5a64;
+    font-weight: bold;
+}
+
+.mr-sm-2{
+    margin-right: 1em;
+}
+
+#btn {
+    background-color: #3fbfe6;
+    border-color: white;
+}
+
+#btn:hover 
+{
+    background-color: #72dbfb;
+}

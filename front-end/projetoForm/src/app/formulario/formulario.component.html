@@ -1,0 +1,123 @@
+<div class="box-formulario">
+<form id="formulario-corpo" #formDir="ngForm" [formGroup]="formForm" (ngSubmit)="submeterCadastro()">
+    <div class="form-group row">
+      <label for="nome" class="col-sm-2 col-form-label">Nome</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="nome" placeholder="Nome" name="nome"  formControlName="nome" required>
+      </div>
+      <div *ngIf="nome.invalid && formDir.submitted" class="validation-error">
+        <p *ngIf="nome.errors?.['required']">O nome é obrigatorio.</p> 
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="sobrenome" class="col-sm-2 col-form-label">Sobrenome</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="sobrenome" placeholder="Sobrenome" name="sobrenome"  formControlName="sobrenome"  required>
+      </div>
+      <div *ngIf="sobrenome.invalid && formDir.submitted" class="validation-error">
+        <p *ngIf="sobrenome.errors?.['required']">O sobrenome é obrigatorio.</p>
+      </div>
+    </div>
+    <div class="form-group row">
+        <label for="emai" class="col-sm-2 col-form-label">E-mail</label>
+        <div class="col-sm-10">
+          <input type="email" class="form-control" id="email" placeholder="seuemail@mail.com" name="email"  formControlName="email" required>
+        </div>
+        <div *ngIf="email.invalid && formDir.submitted" class="validation-error">
+          <p *ngIf="email.errors?.['required']">O email é obrigatorio.</p>
+          <p *ngIf="email.errors?.['email']">Formato invalido.</p>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="data" class="col-sm-2 col-form-label">Data de Nascimento</label>
+        <div class="col-sm-10">
+          <input type="date" class="form-control" id="data"  formControlName="data" required name="data">
+        </div>
+        <div *ngIf="data.invalid && formDir.submitted" class="validation-error">
+          <p *ngIf="data.errors?.['required']">A data é obrigatoria.</p>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="endereco" class="col-sm-2 col-form-label">Endereço</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="endereco" placeholder="Rua quarta, Av quinta, n 142" name="endereco" formControlName="endereco"  required>
+        </div>
+        <div *ngIf="endereco.invalid && formDir.submitted" class="validation-error">
+          <p *ngIf="endereco.errors?.['required']">O endereco é obrigatorio.</p>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="cep" class="col-sm-2 col-form-label">CEP</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="cep" placeholder="00000000"  formControlName="cep" name="cep" required>
+        </div>
+        <div *ngIf="cep.invalid && formDir.submitted" class="validation-error">
+          <p *ngIf="cep.errors?.['required']">O cep é obrigatorio.</p>
+        </div>
+        <div *ngIf="cep.invalid" class="validation-error">
+          <p *ngIf="cep.errors?.['pattern']">8 Digitos e somente números</p>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="telefone" class="col-sm-2 col-form-label">Telefone</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="telefone" placeholder="19999999999" name="telefone"  formControlName="telefone" required>
+        </div>
+        <div *ngIf="telefone.invalid && formDir.submitted" class="validation-error">
+          <p *ngIf="telefone.errors?.['required']">O telefone é obrigatorio.</p>
+        </div>
+        <div *ngIf="telefone.invalid" class="validation-error">
+          <p *ngIf="telefone.errors?.['pattern']">11 Digitos e somente números</p>
+        </div>
+      </div>
+      <div class="box-trb">
+        <p>Trabalha na área</p>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="sim" name="trabalha" formControlName="trabalha" checked>
+        <label class="form-check-label" for="inlineRadio1">Sim</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="nao" name="trabalha" formControlName="trabalha" >
+        <label class="form-check-label" for="inlineRadio2">Não</label>
+      </div>
+    </div>
+    <fieldset class="form-group">
+          <legend class="col-form-label col-sm-2 pt-0">Qual o tipo de ensino ?</legend>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="ensino" id="presencial" value="presencial" formControlName="ensino">
+            <label class="form-check-label" for="presencial">Presencial</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="ensino" id="ead" value="ead" formControlName="ensino">
+            <label class="form-check-label" for="Ead">Ead</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="ensino" id="semipresencial" value="semipresencial" formControlName="ensino">
+            <label class="form-check-label" for="semipresencial">Semi-Presencial</label>
+          </div>
+      </fieldset>
+      <div *ngIf="ensino.invalid && formDir.submitted" class="validation-error">
+        <p *ngIf="ensino.errors?.['required']">O tipo de ensino é obrigatorio.</p>
+      </div>
+      <div class="col-auto my-1">
+        <label class="mr-sm-2" for="inlineFormCustomSelect">Selecione o Curso</label>
+        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect"  name="curso"  formControlName="curso">
+          <option value="ADS">Análise e Desenvolvimento de Sistemas</option>
+          <option value="Comércio Exterior">DBA</option>
+          <option value="CCO">Ciência da computação</option>
+          <option value="Administração">Administração</option>
+          <option value="Química">Química</option>
+          <option value="Comércio Exterior">Comércio Exterior</option>
+        </select>
+      </div>
+      <div *ngIf="curso.invalid && formDir.submitted" class="validation-error">
+        <p *ngIf="curso.errors?.['required']">O curso é obrigatorio.</p>
+      </div>
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <button type="submit" class="btn btn-primary" id="btn">Cadastrar</button>
+      </div>
+    </div>
+   
+  </form>
+</div>
